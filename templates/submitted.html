@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block header %}
+  <header id="header" class="fixed-top header-scrolled">
+    <div class="container">
+      <div class="logo float-left">
+        <h1 class="text-light"><a href="{% url 'home' %}"><span>COURSER</span></a></h1>
+      </div>
+      <nav class="nav-menu float-right d-none d-lg-block">
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li class="active"><a href="{% url 'courses' %}">Courses</a></li>
+          <li><a href="{% url 'profile' request.user.id %}">Profile</a></li>
+          <li><a href="{% url 'contact' %}">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+{% endblock %}
+{% block main %}
+  <section class="services" id="services">
+    <div class="container">
+      <div class="text-center"><h2>SUCCESSFUL !!!</h2></div>
+      <br>
+      <div class="row">
+        <div class="col-md-10 col-lg-10 mx-auto" data-aos="fade-up">
+          <div class="icon-box icon-box-blue">
+            <br>
+            <p class="description">
+                <h5><b>Your Response Has Been Submitted.</b></h5>
+                <br>
+                <h5><b><a href="{% url 'home' %}">Proceed To Homepage</a></b></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block header %}
+  <header id="header" class="fixed-top header-scrolled1">
+    <div class="container">
+      <div class="logo float-left">
+        <h1 class="text-light"><a href="{% url 'home' %}"><span>COURSER</span></a></h1>
+      </div>
+      <nav class="nav-menu float-right d-none d-lg-block">
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'courses' %}">Courses</a></li>
+          {% if user.is_authenticated %}
+          <li class="active"><a href="{% url 'profile' request.user.id %}">Profile</a></li>
+          {% else %}
+          <li><a href="{% url 'login' %}">LOGIN</a></li>
+          {% endif %}
+          <li><a href="{% url 'contact' %}">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+{% endblock %}
+{% block main %}{% endblock %}

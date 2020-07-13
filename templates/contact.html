@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block header %}
+  <header id="header" class="fixed-top header-scrolled">
+    <div class="container">
+      <div class="logo float-left">
+        <h1 class="text-light"><a href="{% url 'home' %}"><span>COURSER</span></a></h1>
+      </div>
+      <nav class="nav-menu float-right d-none d-lg-block">
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'courses' %}">Courses</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'profile' request.user.id %}">Profile</a></li>
+          {% else %}
+          <li><a href="{% url 'login' %}">LOGIN</a></li>
+          {% endif %}
+          <li class="active"><a href="{% url 'contact' %}">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+{% endblock %}
+{% block main %}
+  <section class="services" id="services">
+    <div class="container">
+      <div class="text-center"><h2>CONTACT US</h2></div>
+      <br><br>
+      <div class="text-center">
+        <form method="POST">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <br><br><br><br><br>
+    </div>
+  </section>
+{% endblock %}

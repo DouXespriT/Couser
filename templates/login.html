@@ -1,0 +1,40 @@
+{% load static %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>LOGIN</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="icon" type="image/png" href="{% static 'assets/img/icons/favicon.ico' %}"/>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css' %}">
+</head>
+<body class="hello">
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+				<form class="login100-form validate-form flex-sb flex-w">
+					<span class="login100-form-title p-b-53">
+						 LOGIN / Sign Up
+					</span>
+
+
+					<a href="{% provider_login_url 'google' %}" class="btn-google m-b-20">
+						<img src="{% static 'assets/img/icons/icon-google.png' %}" alt="GOOGLE">
+						Google
+					</a>
+					
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+
+</body>
+</html>

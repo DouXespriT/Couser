@@ -1,0 +1,116 @@
+{% extends 'profile-base.html' %}
+{% block main %}
+<div id="wrapper">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <hr class="sidebar-divider my-0">
+
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'profile' request.user.id %}">
+          <br>
+          <i class="fas fa-fw fa-globe"></i>
+          <span>DASHBOARD</span></a>
+      </li>
+
+      <hr class="sidebar-divider">
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'course_applied' request.user.id %}">
+          <i class="fas fa-fw fa-tasks"></i>
+          <span>Courses Applied</span></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'my_course' request.user.id %}">
+          <i class="fas fa-fw fa-laptop"></i>
+          <span>My Courses</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'my_transaction' request.user.id %}">
+          <i class="fas fa-fw fa-tag"></i>
+          <span>Transactions</span></a>
+      </li>
+
+      
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout_request' %}">
+          <i class="fas fa-fw fa-arrow-left"></i>
+          <span>LOGOUT</span></a>
+      </li>
+
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <div class="container-fluid">
+          <br>
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">DASHBOARD</h1>
+          </div>
+
+          <div class="row">
+
+            <div class="col-xl-3 col-md-6 mb-4 mx-auto">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Courses Applied</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ datas.course_applied }}</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-laptop fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4 mx-auto">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Verified Transactions</div>
+                      <div class="row no-gutters align-items-center">
+                        <div class="col-auto">
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ datas.verified_transaction }}</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+              <div class="col-xl-8 col-lg-7 mx-auto">
+                <div class="card shadow mb-4">
+                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary mx-auto">USER PROFILE</h6>
+                  </div>
+                  <div class="card-body text-center text-info">
+                      <h2>Username : {{ datas.username }}</h2>
+                      <br>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+
+      </div>
+    </div>
+{% endblock %}

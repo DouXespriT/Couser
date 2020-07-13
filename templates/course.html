@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block header %}
+  <header id="header" class="fixed-top header-scrolled">
+    <div class="container">
+      <div class="logo float-left">
+        <h1 class="text-light"><a href="{% url 'home' %}"><span>COURSER</span></a></h1>
+      </div>
+      <nav class="nav-menu float-right d-none d-lg-block">
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li class="active"><a href="{% url 'courses' %}">Courses</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'profile' request.user.id %}">Profile</a></li>
+          {% else %}
+          <li><a href="{% url 'login' %}">LOGIN</a></li>
+          {% endif %}
+          <li><a href="{% url 'contact' %}">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+{% endblock %}
+{% block main %}
+  <section class="services" id="services">
+    <div class="container">
+      <div class="text-center"><h2>COURSES WE OFFER</h2></div>
+      <br>
+      <div class="row">
+        {% for data in datas %}
+        <div class="col-md-6 col-lg-4 d-flex mx-auto" data-aos="fade-up">
+          <div class="icon-box icon-box-blue">
+            <div class="icon"><i class="bx bx-laptop"></i></div>
+            <h4 class="title"><a href="">{{ data.course_title }}</a></h4>
+            <br>
+            <p class="description">
+              <h5><b>Level : </b>{{ data.course_level }}</h5>
+              <h5><b>Duration : </b>{{ data.course_duration }} Days</h5>
+              <br>
+              {{ data.course_desc }}
+              <br><br>
+              <a href="{% url 'transaction' data.course_id %}" class="btn btn-primary">Apply Now</a>
+            </p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

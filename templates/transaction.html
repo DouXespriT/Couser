@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header %}
+  <header id="header" class="fixed-top header-scrolled">
+    <div class="container">
+      <div class="logo float-left">
+        <h1 class="text-light"><a href="{% url 'home' %}"><span>COURSER</span></a></h1>
+      </div>
+      <nav class="nav-menu float-right d-none d-lg-block">
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li class="active"><a href="{% url 'courses' %}">Courses</a></li>
+          <li><a href="{% url 'profile' request.user.id %}">Profile</a></li>
+          <li><a href="{% url 'contact' %}">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+{% endblock %}
+{% block main %}
+  <section class="services" id="services">
+    <div class="container">
+      <div class="text-center"><h2>Transaction</h2></div>
+      <br>
+      <div class="row">
+        <div class="col-md-10 col-lg-10 mx-auto" data-aos="fade-up">
+          <div class="icon-box icon-box-blue">
+            <br>
+            <p class="description">
+                <h5><b>Title : </b>{{ datas.course_title }}</h5>
+                <br>
+              <h5><b>Level : </b>{{ datas.course_level }}</h5>
+              <br>
+              <h5><b>Duration : </b>{{ datas.course_duration }} Days</h5>
+              <br>
+              <h4><b>Scan QR Code to Pay</b></h4>
+              <img src="{% static 'assets/img/qrcode.png' %}" alt="qrcode">
+              <br>
+              <h4><b>OR</b></h4>
+              <h4><b>Transfer on</b></h4>
+              <br>
+              <h4><b>UPI ID : 7876jhgjh@icici</b></h4>
+              <h4><b>( Please use course name as remark )</b></h4>
+              <br><br>
+            </p>
+            <form method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit" class="btn btn-primary"> SUBMIT</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

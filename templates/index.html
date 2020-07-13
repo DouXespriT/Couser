@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header %}
+  <header id="header" class="fixed-top header-transparent">
+    <div class="container">
+
+      <div class="logo float-left">
+        <h1 class="text-light"><a href="{% url 'home' %}"><span>COURSER</span></a></h1>
+      </div>
+
+      <nav class="nav-menu float-right d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'courses' %}">Courses</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'profile' request.user.id %}">Profile</a></li>
+          {% else %}
+          <li><a href="{% url 'login' %}">LOGIN</a></li>
+          {% endif %}
+          <li><a href="{% url 'contact' %}">Contact Us</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+  <section id="hero-no-slider" class="d-flex justify-cntent-center align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+      <div class="row justify-content-center">
+        <div class="col-xl-8">
+          <h2>Welcome to COURSER</h2>
+          <a href="#services" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+{% block main %}
+  <section class="services" id="services">
+    <div class="container">
+      <div class="text-center"><h2>POPULAR COURSES</h2></div>
+      <br>
+
+      <div class="row">
+        {% for data in datas %}
+        <div class="col-md-6 col-lg-4 d-flex mx-auto" data-aos="fade-up">
+          <div class="icon-box icon-box-blue">
+            <div class="icon"><i class="bx bx-laptop"></i></div>
+            <h4 class="title"><a href="">{{ data.course_title }}</a></h4>
+            <br>
+            <p class="description">
+              <h5><b>Level : </b>{{ data.course_level }}</h5>
+              <h5><b>Duration : </b>{{ data.course_duration }} Days</h5>
+              <br>
+              {{ data.course_desc }}
+              <br><br>
+              <a href="{% url 'transaction' data.course_id %}" class="btn btn-primary">Apply Now</a>
+            </p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Features</h2>
+      </div>
+
+      <div class="row" data-aos="fade-up">
+        <div class="col-md-5">
+          <img src="{% static 'assets/img/features-1.svg' %}" class="img-fluid" alt="">
+        </div>
+        <div class="col-md-7 pt-4">
+          <h3>Features provided by us</h3>
+          <ul>
+            <li><i class="icofont-check"></i> Easy and online live classes with experts.</li>
+            <li><i class="icofont-check"></i> certificate on completion.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row" data-aos="fade-up">
+        <div class="col-md-5 order-1 order-md-2">
+          <img src="{% static 'assets/img/features-2.svg' %}" class="img-fluid" alt="">
+        </div>
+        <div class="col-md-7 pt-5 order-2 order-md-1">
+          <h3><b>Keep learning Online with this unique plateform</b></h3>
+        </div>
+      </div>
+
+      <div class="row" data-aos="fade-up">
+        <div class="col-md-5">
+          <img src="{% static 'assets/img/features-3.svg' %}" class="img-fluid" alt="">
+        </div>
+        <div class="col-md-7 pt-5">
+          <h3><b>Live doubt clearance and support by experts</b></h3>
+        </div>
+      </div>
+
+      <div class="row" data-aos="fade-up">
+        <div class="col-md-5 order-1 order-md-2">
+          <img src="{% static 'assets/img/features-4.svg' %}" class="img-fluid" alt="">
+        </div>
+        <div class="col-md-7 pt-5 order-2 order-md-1">
+          <h3><b>Learn new topics everyday</b></h3>
+        </div>
+      </div>
+
+    </div>
+  </section>
+{% endblock %}
